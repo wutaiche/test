@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+		html, body {
+			height: 100%;
+		}
+		#video {
+			background: black;
+			width: 90%;
+			height: 80%;
+			position: relative;
+			overflow: hidden;
+		}
+		.bullet {
+			position: absolute;
+			left: 2000px;
+			background: red;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div id="video">
+		<video style="height: 100%;" src="http://10.9.158.74:8080/1.复习.mp4" controls="controls"></video>
+	</div>
+	<input type="text" id="message" />
+</body>
+<script type="text/javascript">
+	// 连接到socket服务器
+	var socket = io.connect();
+
+	socket.on('welcome', function (data) {
+		console.log(data);
+	})
+
+	socket.on("toAll", function(msg) {
+		console.log("有人在聊天:" + msg);
+		var bullet = $("<div class='bullet'></div>");
+		bullet.text(msg);
+		bullet.css("top", $("#video").height()*Math.random()+"px");
+		$("#video").append(bullet);
+		bullet.animate({left: "-300px"}, 10000, function(){
+			bullet.remove();
+		})
+	})
+
+	var msgDom = document.getElementById("message");
+	msgDom.onkeydown = function(e) {
+		if(e.keyCode == 13) {
+			socket.emit("chat", msgDom.value);
+			msgDom.value = "";
+		}
+	}
+</script>
+</html>

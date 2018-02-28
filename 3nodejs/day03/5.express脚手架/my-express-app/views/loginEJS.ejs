@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1><%= ttt %></h1>
+	用户名：<input type="text" id="username" /><br>
+	密码：<input type="password" id="psw" /><br>
+	<button type="button" onclick="loginFunc()">登录</button>
+</body>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	function loginFunc() {
+		$.ajax({
+			url: "/loginAction",
+			type: "get",
+			data: {
+				username: $("#username").val(),
+				psw: $("#psw").val(),
+			},
+			success: function(res) {
+				alert(res);
+			}
+		})
+	}
+</script>
+</html>

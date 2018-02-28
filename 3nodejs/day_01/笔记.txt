@@ -1,0 +1,87 @@
+理解
+思考
+sense。 第六感，猜。
+多练习。
+
+nodejs
+http://www.nodejs.org
+Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 
+Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。 
+Node.js 的包管理器 npm，是全球最大的开源库生态系统。
+
+--go谷歌
+
+注意点：
+工作第一天，为了能够运行起来代码，要保证本机的node版本和同事的版本一致。
+
+查看版本
+node -v
+
+安装
+npm install 包名 -g
+npm install 包名 --save (把安装的包的信息保存到package.json中)
+npm install 包名 -S
+npm install 包名 --save-dev (把安装的包的信息保存到package.json中)
+npm install 包名 -D
+
+也可以通过install找到某个版本的js文件
+npm install jquery@1.11.3
+
+卸载命令(怎么装的怎么卸载)
+npm uninstall 包名
+
+更新包 
+npm update 包名
+
+查询npm官网上所有的包含指定关键字的包
+npm search 包名关键字
+
+查看包的信息
+npm info jquery
+
+package.json是nodejs的配置文件。
+npm init 来生成package.json
+
+nodejs中没有window对象。
+
+运行js文件
+node 文件名.js
+
+命令行小技巧:
+可以通过>把cmd的运行结果输出到文件中
+npm info jquery > result.txt
+
+前后端交互的名词：
+request: 由客户端发送给服务器端的信息(请求)
+response：服务器返回给客户端的信息（响应）
+
+commonJS规范：
+http://javascript.ruanyifeng.com/nodejs/module.html
+后端模块化规范。nodejs的模块化是commonJS的一个实现。
+module.exports
+exports
+require
+可能的面试题：
+exports和module.exports的关系。
+Node为每个模块提供一个exports变量，指向module.exports。
+
+ES6模块化并不是commonJS
+export default 
+import
+
+fs模块。文件操作模块。 IO iput output
+
+nodejs的最大的缺点：回调地狱 callback hell
+
+
+
+yarn：包管理工具
+https://yarnpkg.com/
+yarn add 包名 --save
+yarn remove 包名 --save
+yarn upgrade 包名
+
+----------------------------------------------------------
+deadline 死线 项目交付日期
+\r\n windows换行
+\n linux换行

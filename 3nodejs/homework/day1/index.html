@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/iconfont.css" />
+    <script src="jquery-1.11.3.js"></script>
+    <title></title>
+   
+</head>
+<body>
+<div id="container">
+<div id="header">
+	<div><span class="iconfont icon-shape"></span><span>卖座电影</span></div> <div><span id="location"></span><span class="icon-pengyou iconfont"></span></div>
+	
+</div>
+<section>
+
+		<img src="img/c4815f9f1cd92d5557a0de049b5ab79a.jpg" alt="" />
+		
+       <ul>
+       	<li><img src="img/f22c70e08bc262c9c501a1bf59258e30.jpg" alt="" />
+       	    <div class="des">
+       	    	<div><p >星球大战最后的武士</p><p class="time">145年上映</p></div>
+       	    	<div><span class="score">8.3</span></div>
+       	    </div>
+       	
+       	</li>
+       		<li><img src="img/34aba968d462b6e454bd87f571ceaea5.jpg" alt="" />
+       	    <div class="des">
+       	    	<div><p >星球大战最后的武士</p><p class="time">145年上映</p></div>
+       	    	<div><span class="score">8.3</span></div>
+       	    </div>
+       	
+       	</li>
+       		<li><img src="img/c879dc398937b864f2424d7e1abf4edf.jpg" alt="" />
+       	    <div class="des">
+       	    	<div><p >星球大战最后的武士</p><p class="time">145年上映</p></div>
+       	    	<div><span class="score">8.3</span></div>
+       	    </div>
+       	
+       	</li>
+       		<li><img src="img/fc952ee11cf01366704dba86d94040f9.jpg" alt="" />
+       	    <div class="des">
+       	    	<div><p >星球大战最后的武士</p><p class="time">145年上映</p></div>
+       	    	<div><span class="score">8.3</span></div>
+       	    </div>
+       	
+       	</li>
+       		<li><img src="img/03ba8d57f64fdef424e60c90b6e3dcdd.jpg" alt="" />
+       	    <div class="des">
+       	    	<div><p >星球大战最后的武士</p><p class="time">145年上映</p></div>
+       	    	<div><span class="score">8.3</span></div>
+       	    </div>
+       	
+       	</li>
+       </ul>
+	      <div class="share">
+	      	   <a href="#">更多热映电影</a>
+	      	
+	      </div>
+	      <div class="furth">  <span>即将上映</span></div>
+	       
+	       <ul class="second">
+       	<li><img src="img/13ccbb13a8506755e3855d10376b4f31.jpg" alt="" />
+       	    <div class="des">
+       	    	<div><p >星球大战最后的武士</p></div>
+       	    	<div><span class="score">1月12号上映</span></div>
+       	    </div>
+       	
+       	</li>
+       	
+       		<li><img src="img/70ffb4129beba4c0c239e3fadfcf0379.jpg" alt="" />
+       	    <div class="des">
+       	    	<div><p >星球大战最后的武士</p></div>
+       	    	<div><span class="score">1月12号上映</span></div>
+       	    </div>
+       	
+       	</li>
+       		<li><img src="img/d44e5dfcb60df8ac39c101b21cd8bf9d.jpg" alt="" />
+       	    <div class="des">
+       	    	<div><p >星球大战最后的武士</p></div>
+       	    	<div><span class="score">1月12号上映</span></div>
+       	    </div>
+       	
+       	</li>
+       	
+       </ul>
+         <div class="share">
+	      	   <a href="#">更多即将上映电影</a>
+	      	
+	      </div>
+	
+</section>
+</div>
+
+</body>
+</html>
+<script>
+  $.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js', function(){
+    $("#location").html(remote_ip_info.city);
+});
+
+
+</script>
