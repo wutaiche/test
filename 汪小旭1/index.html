@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script  src = "jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="common.css" />
+<style>
+  
+  .title li {
+  	float:left;
+  	
+  }
+ 
+  	.content {
+  		border:1px solid tan;
+  		margin-top: 20px;
+  	}
+  	
+  .content li {
+    padding-top:10px;
+    padding-bottom:10px;
+    border-top:1px solid tan;
+    background:pink;
+  }
+  li img{
+  	width:120px;
+  	height:120px;
+  }
+  .price{
+  	margin-left:200px;
+  	
+  }
+  .numcontrol{
+  	margin-left:100px;
+  	
+  }
+  .count{
+  	margin-left:100px;
+  	
+  }
+  .del{
+  	margin-left:100px;
+  	cursor: pointer;
+  }
+  input {
+  	width:50px;
+  	border:1px solid tan;
+  	float:left;
+  	height:16px;
+  	text-align: center;
+  }
+  .numcontrol span {
+  	border:1px solid tan;
+  	padding:0 5px;
+  	float:left;
+  	cursor:pointer;
+  }
+  .result{
+  	margin-top:20px;
+  	border:1px solid tan;
+  	padding:10px 0;
+  }
+  .dec{
+  	background:gray;
+  	
+  }
+  
+</style>
+</head>
+<body>
+
+<ul class="clearfix title wrap_1200" style="padding-top:10px">
+	<li style="width:100px">
+		<input  class="check" type="checkbox">全选
+	</li>
+	<li style="width:520px"> 商品
+		
+	</li>
+	<li style="width:168px">单价</li>
+	<li style="width:176px">数量</li>
+	<li style="width:136px">小计</li>
+	<li style="width:100px">操作</li>
+	
+	
+</ul>
+
+<ul class="clearfix  content wrap_1200">
+<li class="clearfix">
+	<input  class="check fl" type="checkbox">
+   <div class= "fl">
+   	<img src="13.jpg" alt="" />
+   	<p class="fr" style="width:100px ;margin-left:20px;"> 颜色：玫瑰金色</p>
+   	<p class="fr" style="width:100px ;margin-left:20px;"> oppo双卡双待手机 </p>
+   	
+   </div>
+	
+	<p  class="price fl">￥5598.0</p>
+	
+
+    <div class ="numcontrol fl">
+	<span class="dec">-</span>
+	<input type ="text" class="num"  value="1"> 
+	<span class="add">+</span>
+	</div>
+
+
+<p class="count fl"> </p>
+	
+	
+
+<p  class="del fl">
+	删除
+</p>
+	</li>
+	
+	<li class="clearfix">
+	<input  class="check fl" type="checkbox">
+   <div class= "fl">
+   	<img src="14.jpg" alt="" />
+   	<p class="fr" style="width:100px ;margin-left:20px;"> 颜色：玫瑰金色</p>
+   	<p class="fr" style="width:100px ;margin-left:20px;"> iphone苹果手机</p>
+   	
+   </div>
+	
+	<p  class="price fl">￥5598.0</p>
+	
+
+    <div class ="numcontrol fl">
+	<span class="dec">-</span>
+	<input type ="text" class="num"  value="1"> 
+	<span class="add">+</span>
+	</div>
+
+
+<p class="count fl"> </p>
+	
+	
+
+<p  class="del fl">
+	删除
+</p>
+	</li>
+	
+</ul>
+
+<ul class = "wrap_1200 result" >
+	<li>
+		<input  class="check fl" type="checkbox">全选
+	    <span style="margin-left:50px">总共有<i class ="shangpinnum" style="width:20px;color:red;display:inline-block"></i>件商品被选中</span>
+		<span class="fr" style="width:200px;">总价：<i class="zongjia" style="color:red;padding-right:30px;font-size:16px;font-weight: 600;"></i></span>
+	</li>
+	
+</ul>
+
+<body>
+
+</html>
+<script>  
+	
+	function contant(){
+		var len =$(".content").children().length;
+		var sumcount=0;
+		var shangpinnum =0;
+	  for (var i = 0;i<len;i++){
+	  	var li =  $(".content").find("li").eq(i);
+	  	var price = li.find(".price").text().slice(1) *li.find(".num").val();
+	  	//console.log(price);
+	  	li.find(".count").text("￥"+parseFloat(price));
+	  	if(li.find(".check").is(":checked")){
+	  		sumcount +=price;
+	  		shangpinnum += parseInt(li.find(".num").val());
+	  		
+	  	}
+	  	//sumcount += price;
+	  }
+		$(".zongjia").text("￥"+parseFloat(sumcount));
+		$(".shangpinnum").text(shangpinnum);
+	}
+	
+	contant();
+	
+   $(".del").click(function(){
+     if(confirm("是否确认删除"))
+     {
+   	$(this).parent().remove();
+   $(this).siblings(".check").prop("checked",false);
+   contant();
+   	}
+   });
+   
+   $(".num").change(function(){
+       var value = parseInt( $(this).val());
+   	 if(value<=1||isNaN(value)){
+   	 	
+   	 	$(this).val(1);
+   	 	$(this).siblings(".dec").css({"background":"gray"});
+   	 	$(this).siblings(".add").css({"background":"white"});
+   	 }else if(value>=99){
+   	 	$(this).val(99);
+   	 	$(this).siblings(".add").css({"background":"gray"});
+   	 	$(this).siblings(".dec").css({"background":"white"});
+   	 	
+   	 }else{
+   	 $(this).siblings(".add").css({"background":"white"});
+   	 $(this).siblings(".dec").css({"background":"white"});
+   	 }
+   	 contant();
+   	
+   })
+   
+   
+   $(".dec").click(function(){
+   	
+   var num =$(this).siblings(".num").val();
+   $(this).siblings(".add").css({"background":"white"});
+   	if(num==1){
+   		
+   		return;
+   		
+   	}
+   	num--
+   	if(num == 1){
+   		$(this).css({"background":"gray"});
+   	}
+   	  $(this).siblings(".num").val(num) ;
+   	contant();
+   });
+   
+   $(".add").click(function(){
+   	 var num =$(this).siblings(".num").val();
+   	 $(this).siblings(".dec").css({"background":"white"});
+   	if(num==99){
+   		
+   		return;
+   		
+   	}
+   	
+  // 	console.log(num);
+   	 num++
+   	 if(num == 99){
+   	 	$(this).css({"background":"gray"});
+   	 	
+   	 }
+   	  $(this).siblings(".num").val(num) ;
+   	contant();
+   	
+   	
+   })
+   
+   $(".content").find(".check").change(function(){
+   	 contant();
+   	
+   	
+   })
+   
+   $(".result").find(".check").change(function(){
+   	 $(".check").prop("checked",$(this).prop("checked"));
+   	  contant();
+   	
+   })
+   
+   $(".title").find(".check").change(function(){
+   	$(".check").prop("checked",$(this).prop("checked"));
+   	  contant();
+   	
+   	
+   })
+   
+
+  </script>
+
